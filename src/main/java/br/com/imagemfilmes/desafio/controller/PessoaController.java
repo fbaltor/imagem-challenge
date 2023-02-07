@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -24,7 +23,9 @@ public class PessoaController {
 
     @RequestMapping("/listar/alfabetico")
     public List<Pessoa> listarOrdenadoNome() throws Exception {
-        return Collections.emptyList(); //TODO IMPLEMENTAR
+        var pessoas = pessoaService.getPessoas();
+        pessoas.sort((p1, p2) -> p1.getNome().compareToIgnoreCase(p2.getNome()));
+        return pessoas;
     }
 
 }

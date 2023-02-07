@@ -1,7 +1,8 @@
 package br.com.imagemfilmes.desafio.controller;
 
 import br.com.imagemfilmes.desafio.entity.Produto;
-import br.com.imagemfilmes.desafio.service.PessoaService;
+import br.com.imagemfilmes.desafio.service.ProdutoService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,11 @@ import java.util.List;
 public class ProdutoController {
 
     @Autowired
-    PessoaService pessoaService;
+    ProdutoService produtoService;
 
     @RequestMapping("/listar")
     public List<Produto> listar() throws Exception {
-        return Collections.emptyList(); //TODO IMPLEMENTAR
+        return produtoService.getProdutos();
     }
 
     @RequestMapping("/listar/preco")
