@@ -16,7 +16,7 @@ public class PessoaDAO extends DAO {
     }
 
     public List<Pessoa> findAll() throws SQLException {
-        try (PreparedStatement psmt = getConnection().prepareStatement("SELECT * FROM pessoa")) {
+        try (PreparedStatement psmt = this.getConnection().prepareStatement("SELECT * FROM pessoa")) {
             try (ResultSet rs = psmt.executeQuery()) {
                 final List<Pessoa> pessoas = new ArrayList<>();
                 while (rs.next()) {

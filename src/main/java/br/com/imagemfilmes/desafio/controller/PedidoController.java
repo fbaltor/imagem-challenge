@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/pedidos", produces = MediaType.APPLICATION_JSON_VALUE)
-public class PediddoController {
+public class PedidoController {
 
     @RequestMapping("/listar")
     public List<Void> listar() throws Exception {

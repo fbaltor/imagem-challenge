@@ -16,7 +16,7 @@ public class ProdutoDAO extends DAO {
     }
 
     public List<Produto> findAll() throws SQLException {
-        try (PreparedStatement psmt = getConnection().prepareStatement("SELECT * FROM produto")) {
+        try (PreparedStatement psmt = this.getConnection().prepareStatement("SELECT * FROM produto")) {
             try (ResultSet rs = psmt.executeQuery()) {
                 final List<Produto> produtos = new ArrayList<>();
                 while (rs.next()) {
