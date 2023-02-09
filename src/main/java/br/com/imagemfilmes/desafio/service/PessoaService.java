@@ -21,4 +21,9 @@ public class PessoaService {
         }
     }
 
+    public List<Pessoa> getPessoasOrdenadoPorNome() throws Exception {
+        var pessoas = this.getPessoas();
+        pessoas.sort((p1, p2) -> p1.getNome().compareToIgnoreCase(p2.getNome()));
+        return pessoas;
+    }
 }

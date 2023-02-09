@@ -21,4 +21,10 @@ public class ProdutoService {
         }
     }
 
+    public List<Produto> getProdutosOrdenadoPorPreco() throws Exception {
+        var produtos = this.getProdutos();
+        produtos.sort((p1, p2) -> p1.getValorUnitario().compareTo(p2.getValorUnitario()));
+        return produtos;
+    }
+
 }

@@ -22,10 +22,8 @@ public class PessoaController {
     }
 
     @RequestMapping("/listar/alfabetico")
-    public List<Pessoa> listarOrdenadoNome() throws Exception {
-        var pessoas = pessoaService.getPessoas();
-        pessoas.sort((p1, p2) -> p1.getNome().compareToIgnoreCase(p2.getNome()));
-        return pessoas;
+    public List<Pessoa> listarOrdenadoPorNome() throws Exception {
+        return pessoaService.getPessoasOrdenadoPorNome();
     }
 
 }
