@@ -1,13 +1,13 @@
 INSERT INTO pessoa (cpf, nome)
 VALUES
-  	('56637927082', 'Pessoa 1'), -- id 1
-  	('56637927082', 'Pessoa 2'); -- id 2
+  	('56637927082', 'Pedro'), -- id 1
+  	('56637927082', 'Joao'); -- id 2
 
 INSERT INTO produto (descricao, valor_unitario)
 VALUES
-  	('Produto 1', 10.0), -- id 1
+  	('Produto 1', 50.0), -- id 1
   	('Produto 2', 20.0), -- id 2
-  	('Produto 3', 20.0); -- id 3
+  	('Produto 3', 30.0); -- id 3
 
 INSERT INTO pedido (pessoa_id)
 VALUES
