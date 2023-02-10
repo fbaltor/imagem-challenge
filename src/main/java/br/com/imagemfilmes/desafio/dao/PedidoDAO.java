@@ -46,14 +46,13 @@ public class PedidoDAO extends DAO {
 
         try (PreparedStatement psmt = this.getConnection().prepareStatement(query)) {
             try (ResultSet rs = psmt.executeQuery()) {
-                List<Pedido> pedidos = new ArrayList<>();
-                Map<Long, Pedido> pedidosId = new HashMap<>();
+                Map<Long, Pedido> pedidosMap = new HashMap<>();
 
                 while (rs.next()) {
                     final long pedidoId = rs.getLong("pedido_id");
 
                     Pedido pedido;
-                    if (!pedidosId.containsKey(pedidoId)) {
+                    if (!pedidosMap.containsKey(pedidoId)) {
                         final Pessoa pessoa = new Pessoa()
                                 .setId(rs.getInt("pessoa_id"))
                                 .setCpf(rs.getString("pessoa_cpf"))
@@ -63,10 +62,8 @@ public class PedidoDAO extends DAO {
                                 .setId(pedidoId)
                                 .setPessoa(pessoa)
                                 .setItens(new ArrayList<PedidoItem>());
-                        
-                        pedidosId.put(pedidoId, pedido);
                     } else {
-                        pedido = pedidosId.get(pedidoId);
+                        pedido = pedidosMap.get(pedidoId);
                     }
 
                     final Produto produto = new Produto()
@@ -83,10 +80,10 @@ public class PedidoDAO extends DAO {
                     itens.add(pedidoItem);
                     pedido.setItens(itens);
 
-                    pedidos.add(pedido);
+                    pedidosMap.put(pedidoId, pedido);
                 }
 
-                return pedidos;
+                return new ArrayList<Pedido>(pedidosMap.values());
             }
         }
     }
